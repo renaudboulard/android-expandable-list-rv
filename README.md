@@ -1,1 +1,1 @@
-"# android-expandable-list-rv" 
+Expandable list build up on a simple RecyclerView
