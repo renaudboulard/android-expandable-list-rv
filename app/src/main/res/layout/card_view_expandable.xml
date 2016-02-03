@@ -11,6 +11,7 @@
         android:layout_marginLeft="20dp"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
+        card_view:cardBackgroundColor="#e6e6e6"
         card_view:cardCornerRadius="4dp">
 
         <TextView
