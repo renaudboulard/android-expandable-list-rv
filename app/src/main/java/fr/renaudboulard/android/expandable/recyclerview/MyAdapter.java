@@ -25,14 +25,28 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     // Create new views (invoked by the layout manager)
     @Override
     public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // create a new view
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_view, parent, false);
-        // set the view's size, margins, paddings and layout parameters
+        View v = null;
+        switch (viewType) {
+            case 1:
+                v = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.card_view, parent, false);
+
+                return new ViewHolder(v,this.onItemClickListener, false);
+            case 0:
+                v = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.card_view_expandable, parent, false);
+
+                return new ViewHolder(v,this.onItemClickListener, true);
+
+            default:
+                v = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.card_view, parent, false);
+
+                return new ViewHolder(v,this.onItemClickListener, false);
+
+        }
 
 
-        ViewHolder vh = new ViewHolder(v,this.onItemClickListener);
-        return vh;
     }
 
     // Replace the contents of a view (invoked by the layout manager)
@@ -42,6 +56,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - replace the contents of the view with that element
         holder.mTextView.setText(mDataset.get(position).getTitle());
 
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        // Just as an example, return 0 or 2 depending on position
+        // Note that unlike in ListView adapters, types don't have to be contiguous
+        Expandable expandable = mDataset.get(position);
+        if(expandable.isChild()){
+            return 0;
+        } else {
+            return 1;
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -59,11 +85,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public TextView mTextView;
         public OnItemClickListener onItemClickListener;
 
-        public ViewHolder(View v, OnItemClickListener onItemCL) {
+        public ViewHolder(View v, OnItemClickListener onItemCL, boolean isChild) {
             super(v);
             mTextView = (TextView) v.findViewById(R.id.info_text);
             onItemClickListener = onItemCL;
-            v.setOnClickListener(this);
+            if (!isChild){
+                v.setOnClickListener(this);
+            }
         }
 
         @Override

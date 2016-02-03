@@ -7,9 +7,15 @@ public class Expandable {
 
     private String title;
     private boolean isExpand = false;
+    private boolean isChild = false;
 
     public Expandable(String title) {
         this.title = title;
+    }
+
+    public Expandable(String title, boolean isChild) {
+        this.title = title;
+        this.isChild = isChild;
     }
 
     public String getTitle() {
@@ -26,5 +32,13 @@ public class Expandable {
 
     public void setIsExpand(boolean isExpand) {
         this.isExpand = isExpand;
+    }
+
+    public boolean isChild() {
+        return isChild;
+    }
+
+    public void setIsChild(boolean isChild) {
+        this.isChild = isChild;
     }
 }

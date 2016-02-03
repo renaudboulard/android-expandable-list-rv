@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
         // use this setting to improve performance if you know that changes
@@ -33,12 +34,12 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         myDataset = new ArrayList<>();
-        myDataset.add(new Expandable("Line 1"));
-        myDataset.add(new Expandable("Line 2"));
-        myDataset.add(new Expandable("Line 3"));
-        myDataset.add(new Expandable("Line 4"));
-        myDataset.add(new Expandable("Line 5"));
-        myDataset.add(new Expandable("Line 6"));
+        myDataset.add(new Expandable("Line 1", false));
+        myDataset.add(new Expandable("Line 2", false));
+        myDataset.add(new Expandable("Line 3", false));
+        myDataset.add(new Expandable("Line 4", false));
+        myDataset.add(new Expandable("Line 5", false));
+        myDataset.add(new Expandable("Line 6", false));
 
         // specify an adapter (see also next example)
         mAdapter = new MyAdapter(myDataset,this);
@@ -48,8 +49,8 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     @Override
     public void onItemClick(int position) {
         if (!myDataset.get(position).isExpand()) {
-            myDataset.add(position + 1, new Expandable("Expandable"));
-            myDataset.add(position + 1, new Expandable("Expandable"));
+            myDataset.add(position + 1, new Expandable("Expandable 2", true));
+            myDataset.add(position + 1, new Expandable("Expandable 1", true));
             mAdapter.notifyItemRangeInserted(position + 1,2);
             myDataset.get(position).setIsExpand(true);
             mRecyclerView.scrollToPosition(position+2);
