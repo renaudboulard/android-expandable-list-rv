@@ -51,14 +51,14 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         if (!myDataset.get(position).isExpand()) {
             myDataset.add(position + 1, new Expandable("Expandable 2", true));
             myDataset.add(position + 1, new Expandable("Expandable 1", true));
-            mAdapter.notifyItemRangeInserted(position + 1,2);
+            mAdapter.notifyItemRangeInserted(position + 1, 2);
             myDataset.get(position).setIsExpand(true);
-            mRecyclerView.scrollToPosition(position+2);
+            mRecyclerView.scrollToPosition(position + 2);
         } else {
             myDataset.get(position).setIsExpand(false);
             myDataset.remove(position + 1);
             myDataset.remove(position + 1);
-            mAdapter.notifyItemRangeRemoved(position + 1,2);
+            mAdapter.notifyItemRangeRemoved(position + 1, 2);
 
         }
 
