@@ -1,3 +1,5 @@
+### Expandable RecyclerView
+
 Expandable list build with a simple RecyclerView
 
 When you want to expand a section you just add new items to your adapter after the item to expand. 
@@ -7,3 +9,5 @@ To collapse a section you simply remove the relevant items, and call `notifyItem
 It's as simple as that, you do not need a extern library
 
 ![Video](video_readme.gif "Expandable list build up on a simple RecyclerView")
+
+ps : please forget the old ~~`ExpandableListView`~~ this is not a good solution
