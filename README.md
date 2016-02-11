@@ -10,4 +10,4 @@ It's as simple as that, you do not need a extern library
 
 ![Video](video_readme.gif "Expandable list build up on a simple RecyclerView")
 
-ps : please forget the old ~~`ExpandableListView`~~ this is not a good solution
+ps : please forget the old ~~`ExpandableListView`~~ this is not a good solution any more
